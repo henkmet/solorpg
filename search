@@ -1,4 +1,4 @@
 #!/bin/sh
 grep -i "$1" $2 > temp.txt
-/home/henk/games/cutup/stanza temp.txt
+./stanza temp.txt
 rm temp.txt
