@@ -1,2 +1,2 @@
 # solorpg
-Things pertaining to playing rpg solo
+Things pertaining to playing rpg solo.
