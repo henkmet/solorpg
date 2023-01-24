@@ -1,0 +1,6 @@
+#!/bin/sh
+L=$(wc -l < $1)
+for i in 1 2 3 4 5
+do
+  rnd=$((1 + $RANDOM % $L)) ; sed -n "${rnd}p" $1
+done

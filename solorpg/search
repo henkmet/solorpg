@@ -1,0 +1,4 @@
+#!/bin/sh
+grep -i $1 chinese.txt > temp.txt
+/home/henk/games/cutup/stanza temp.txt
+rm temp.txt
