@@ -1,0 +1,3 @@
+#!/bin/sh
+#This script is to be run in a directory with image files (only) as tarots n where n is the number of cards to be drawn.
+	ls |sort -R | tail -n $1 |while read file; do nsxiv $file; done
