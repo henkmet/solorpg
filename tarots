@@ -1,3 +1,11 @@
 #!/bin/sh
 #This script is to be run in a directory with image files (only) as tarots n where n is the number of cards to be drawn.
-	ls |sort -R | tail -n $1 |while read file; do nsxiv $file; done
+ls |sort -R | tail -n $1 |while read file; do 
+if expr $(($SRANDOM%2)) = 1 > /dev/null; then nsxiv $file
+else
+	filename="/tmp/im.$$"
+	gm convert -rotate 180 $file "$filename"
+	nsxiv $filename
+	/bin/rm "$filename"
+fi
+done
