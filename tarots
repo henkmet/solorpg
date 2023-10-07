@@ -1,9 +1,22 @@
 #!/bin/sh
 #This script is to be run in a directory with image files (only) as tarots n where n is the number of cards to be drawn.
+
+# Check if the number of arguments is correct
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 <number of images>"
+	exit 1
+fi
+
+imnum=$(ls | wc -l)
+if ! [ $1 -le $(ls | wc -l) 2>/dev/null ]; then
+	printf "Provide an integer smaller than or equal to the number of images, %d\n" $imnum
+	exit 1
+fi
+
 ls |sort -R | tail -n $1 |while read file; do 
 if expr $(($SRANDOM%2)) = 1 > /dev/null; then nsxiv $file
 else
-	filename="/tmp/im.$$"
+	filename="$(mktemp --suffix=".png")"
 	gm convert -rotate 180 $file "$filename"
 	nsxiv $filename
 	/bin/rm "$filename"
